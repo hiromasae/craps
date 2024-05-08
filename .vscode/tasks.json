@@ -7,9 +7,14 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${workspaceFolder}/craps/main.cpp",
+                "${workspaceFolder}/craps/Game.cpp",
+                "${workspaceFolder}/craps/LinkedList.cpp",
+                "${workspaceFolder}/craps/Node.cpp",
+                "${workspaceFolder}/craps/RollHistory.cpp",
+                "${workspaceFolder}/craps/TransactionHistory.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/craps/main"
             ],
             "options": {
                 "cwd": "${fileDirname}"

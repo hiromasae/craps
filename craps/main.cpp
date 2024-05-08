@@ -1,5 +1,3 @@
-#include "Game.h"
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -10,15 +8,14 @@ int getMenuChoice() {
     int menuChoice;
    
     do {
-        std::cout << std::endl;
-        std::cout << "--------------------------------------------------------------------------------\n";
+        std::cout << "\n--------------------------------------------------------------------------------\n";
         std::cout << "Craps menu: \n";
         std::cout << " (1) Start game\n";
         std::cout << " (2) How to play\n";
         std::cout << " (3) Check balance\n";
         std::cout << " (4) Transaction history\n";
         std::cout << " (5) Roll history\n";
-        std::cout << "Enter a number from 1 to " << max_menu_option << "(0 to exit):\n";
+        std::cout << "Enter a number from 1 to " << max_menu_option << " (0 to exit):\n";
         std::cin >> menuChoice;
       
         if (menuChoice < 0 || menuChoice > max_menu_option) {
@@ -113,36 +110,40 @@ void craps() {
         // Bot's turn
         botBet = (rand() % playerBalance);
         std::cout << "The bot puts $" << botBet << " into the pot.\n";
-        roll1 = rollDice();
-        roll2 = rollDice();
-        rollSum = roll1 + roll2;
+        std::cout << "Enter 'R' to continue: ";
+        std::cin >> roll;
+        std::cout << std::endl;
 
-        std::cout << "Bot rolled: " << roll1 << " + " << roll2 << " = " << rollSum << std::endl;
+        int botRoll1 = rollDice();
+        int botRoll2 = rollDice();
+        int botRollSum = botRoll1 + botRoll2;
 
-        if (rollSum == 7 || rollSum == 11) {
+        std::cout << "Bot rolled: " << botRoll1 << " + " << botRoll2 << " = " << botRollSum << std::endl;
+
+        if (botRollSum == 7 || botRollSum == 11) {
             std::cout << "Bot wins!\n\n";
             playerBalance -= botBet;
         }
-        else if (rollSum == 2 || rollSum == 3 || rollSum == 12) {
+        else if (botRollSum == 2 || botRollSum == 3 || botRollSum == 12) {
             std::cout << "Bot loses!\n\n";
             playerBalance += botBet;
         }
         else {
-            int point = rollSum;
+            int point = botRollSum;
             std::cout << "Bot's point is: " << point << std::endl;
 
             while (true) {
-                roll1 = rollDice();
-                roll2 = rollDice();
-                rollSum = roll1 + roll2;
-                std::cout << "Bot rolled: " << roll1 << " + " << roll2 << " = " << rollSum << std::endl;
+                botRoll1 = rollDice();
+                botRoll2 = rollDice();
+                botRollSum = botRoll1 + botRoll2;
+                std::cout << "Bot rolled: " << botRoll1 << " + " << botRoll2 << " = " << botRollSum << std::endl;
 
-                if (rollSum == point) {
+                if (botRollSum == point) {
                     std::cout << "Bot wins!\n\n";
                     playerBalance -= botBet;
                     break;
                 }
-                else if (rollSum == 7) {
+                else if (botRollSum == 7) {
                     std::cout << "Bot loses!\n\n";
                     playerBalance += botBet;
                     break;
@@ -166,7 +167,23 @@ void howToPlayDoc() {
 
     std::cout << "--------------------------------------------------------------------------------\n";
     std::cout << "How to play craps:\n";
-    std::cout << "Enter 'P' to play craps ('Q' to return to menu): ";
+    std::cout << "Enter 'P' to play craps ('Q' to return to menu):\n";
+    std::cin >> choice;
+
+    while (choice == 'p' || choice == 'P') {
+        craps();
+        if (choice != 'p' || choice != 'P') {
+        break;
+        }
+    }
+}
+
+void printBalance() {
+    char choice; 
+
+    std::cout << "\n--------------------------------------------------------------------------------\n";
+    std::cout << "Your current balance is: $" << playerBalance << std::endl;
+    std::cout << "Enter 'P' to play craps ('Q' to return to menu):\n";
     std::cin >> choice;
 
     while (choice == 'p' || choice == 'P') {
@@ -179,6 +196,7 @@ void howToPlayDoc() {
 
 int main() {
     int menuChoice;
+
     do {
         menuChoice = getMenuChoice();
         switch (menuChoice) {
@@ -187,6 +205,13 @@ int main() {
                 break;
             case 2:
                 howToPlayDoc();
+                break;
+            case 3:
+                printBalance();
+                break;
+            case 4:
+                break;
+            case 5:
                 break;
         }
     }
