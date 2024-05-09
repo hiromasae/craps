@@ -12,4 +12,5 @@ class PlayerBalance {
         void decreasePlayerBalance(int decreaseValue);
         void printBalance(PlayerBalance& balance);
 };
+
 #endif

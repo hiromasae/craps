@@ -6,7 +6,7 @@ PlayerBalance::PlayerBalance() {
 }
 
 PlayerBalance::PlayerBalance(int newPlayerBalance) {
-    playerBalance = newPlayerBalance;
+    this->playerBalance = newPlayerBalance;
 }
 
 int PlayerBalance::getPlayerBalance() const {

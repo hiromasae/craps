@@ -1,19 +1,17 @@
 #include <iostream>
 #include "Game.h"
+#include "../linkedlist/LinkedList.h"
 #include "../playerbalance/PlayerBalance.h"
-
-int playerBalance;
-int botBalance = playerBalance;
+#include "../playerbalancehistory/PlayerBalanceHistory.h"
 
 int rollDice() {
     return (rand() % 6) + 1; 
 }
 
-void craps(PlayerBalance& balance) {
-    // Seed the random number generator
-    srand(static_cast<unsigned int>(time(0)));
+void craps(PlayerBalance& balance, LinkedList<std::string>& balanceList) {
     char playAgain = 'y';
     char roll;
+    int playerBalance;
     int playerBet;
     int botBet;
 
@@ -47,10 +45,12 @@ void craps(PlayerBalance& balance) {
         if (rollSum == 7 || rollSum == 11) {
             std::cout << "Player wins!\n\n";
             balance.increasePlayerBalance(playerBet);
+            addAddToList(balanceList, std::to_string(playerBet));
         }
         else if (rollSum == 2 || rollSum == 3 || rollSum == 12) {
             std::cout << "Player loses!\n\n";
             balance.decreasePlayerBalance(playerBet);
+            addMinusToList(balanceList, std::to_string(playerBet));
         }
         else {
             int point = rollSum;
@@ -65,11 +65,13 @@ void craps(PlayerBalance& balance) {
                 if (rollSum == point) {
                     std::cout << "Player wins!\n\n";
                     balance.increasePlayerBalance(playerBet);
+                    addAddToList(balanceList, std::to_string(playerBet));
                     break;
                 }
                 else if (rollSum == 7) {
                     std::cout << "Player loses!\n\n";
                     balance.decreasePlayerBalance(playerBet);
+                    addMinusToList(balanceList, std::to_string(playerBet));
                     break;
                 }
             }
@@ -101,10 +103,12 @@ void craps(PlayerBalance& balance) {
         if (botRollSum == 7 || botRollSum == 11) {
             std::cout << "Bot wins!\n\n";
             balance.decreasePlayerBalance(botBet);
+            addMinusToList(balanceList, std::to_string(botBet));
         }
         else if (botRollSum == 2 || botRollSum == 3 || botRollSum == 12) {
             std::cout << "Bot loses!\n\n";
             balance.increasePlayerBalance(botBet);
+            addAddToList(balanceList, std::to_string(botBet));
         }
         else {
             int point = botRollSum;
@@ -119,11 +123,13 @@ void craps(PlayerBalance& balance) {
                 if (botRollSum == point) {
                     std::cout << "Bot wins!\n\n";
                     balance.decreasePlayerBalance(botBet);
+                    addMinusToList(balanceList, std::to_string(botBet));
                     break;
                 }
                 else if (botRollSum == 7) {
                     std::cout << "Bot loses!\n\n";
                     balance.increasePlayerBalance(botBet);
+                    addAddToList(balanceList, std::to_string(botBet));
                     break;
                 }
             }

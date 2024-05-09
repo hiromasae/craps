@@ -16,8 +16,7 @@ void howToPlayDoc() {
         std::cout << "Error! Could not open file crapsrules.txt.";
     }
 
-    while (!file.eof()) {
-        getline(file, line);
+    while (getline(file, line)) {
         std::cout << line << std::endl;
     }
 

@@ -10,10 +10,11 @@
                 "${workspaceFolder}/craps/main.cpp",
                 "${workspaceFolder}/craps/game/Game.cpp",
                 "${workspaceFolder}/craps/howtoplay/HowToPlay.cpp",
-                "${workspaceFolder}/craps/linkedlist/LinkedList.cpp",
+                "${workspaceFolder}/craps/linkedlist/LinkedList.h",
                 "${workspaceFolder}/craps/menu/Menu.cpp",
-                "${workspaceFolder}/craps/node/Node.cpp",
+                "${workspaceFolder}/craps/node/Node.h",
                 "${workspaceFolder}/craps/playerbalance/PlayerBalance.cpp",
+                "${workspaceFolder}/craps/playerbalancehistory/PlayerBalanceHistory.cpp",
                 "${workspaceFolder}/craps/rollhistory/RollHistory.cpp",
                 "-o",
                 "${workspaceFolder}/craps/main"
