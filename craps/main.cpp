@@ -2,11 +2,10 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "Game.h"
-#include "HowToPlay.h"
-#include "Menu.h"
-#include "PlayerBalance.h"
-#include "PrintBalance.h"
+#include "game/Game.h"
+#include "howtoplay/HowToPlay.h"
+#include "menu/Menu.h"
+#include "playerbalance/PlayerBalance.h"
 
 int main() {
     int menuChoice;
@@ -22,7 +21,7 @@ int main() {
                 howToPlayDoc();
                 break;
             case 3:
-                printBalance(balance);
+                balance.printBalance(balance);
                 break;
             case 4:
                 break;

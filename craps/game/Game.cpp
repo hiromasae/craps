@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Game.h"
-#include "PlayerBalance.h"
+#include "../playerbalance/PlayerBalance.h"
 
 int playerBalance;
 int botBalance = playerBalance;
@@ -20,12 +20,12 @@ void craps(PlayerBalance& balance) {
     std::cout << "--------------------------------------------------------------------------------\n";
     std::cout << "Welcome to craps!\n";
     std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
-    std:: cout << std::endl;
 
     while (playAgain == 'y' || playAgain == 'Y') {
         playerBalance = balance.getPlayerBalance();
+
         do {
-            std::cout << "Enter your bet: $";
+            std::cout << "\nEnter your bet: $";
             std::cin >> playerBet;
 
             if (playerBet > playerBalance) {
@@ -132,7 +132,6 @@ void craps(PlayerBalance& balance) {
         std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
         std:: cout << "Another game? 'Y' or 'N':\n";
         std::cin >> playAgain;
-        std:: cout << std::endl;
 
         if (playAgain != 'y' && playAgain != 'Y') {
             break;

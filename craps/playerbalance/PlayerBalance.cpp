@@ -1,3 +1,4 @@
+#include <iostream>
 #include "PlayerBalance.h"
 
 PlayerBalance::PlayerBalance() {
@@ -18,5 +19,13 @@ void PlayerBalance::increasePlayerBalance(int increaseValue) {
 
 void PlayerBalance::decreasePlayerBalance(int decreaseValue) {
     playerBalance -= decreaseValue;
+}
+
+void PlayerBalance::printBalance(PlayerBalance& balance) {
+    char choice;
+    std::cout << "\n--------------------------------------------------------------------------------\n";
+    std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
+    std::cout << "Enter 'Q' to return to menu:\n";
+    std::cin >> choice;
 }
 

@@ -10,5 +10,6 @@ class PlayerBalance {
         int getPlayerBalance() const;
         void increasePlayerBalance(int increaseValue);
         void decreasePlayerBalance(int decreaseValue);
+        void printBalance(PlayerBalance& balance);
 };
 #endif

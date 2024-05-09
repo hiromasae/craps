@@ -1,6 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
-#include "PlayerBalance.h"
+#include "../playerbalance/PlayerBalance.h"
 
 void craps(PlayerBalance& balance);
 
