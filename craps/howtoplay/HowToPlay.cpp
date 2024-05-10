@@ -11,7 +11,7 @@ void howToPlayDoc() {
 
     std::cout << "\n--------------------------------------------------------------------------------\n";
 
-    file.open("../howtoplay/crapsrules.txt");
+    file.open("crapsrules.txt");
 
     if (!file.is_open()) {
         std::cout << "Error! Could not open file crapsrules.txt.";
