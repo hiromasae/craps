@@ -1,27 +1,27 @@
 #include <iostream>
-#include "PlayerBalance.h"
+#include "Player.h"
 
-PlayerBalance::PlayerBalance() {
+Player::Player() {
     playerBalance = 100;
 }
 
-PlayerBalance::PlayerBalance(int newPlayerBalance) {
+Player::Player(int newPlayerBalance) {
     this->playerBalance = newPlayerBalance;
 }
 
-int PlayerBalance::getPlayerBalance() const {
+int Player::getPlayerBalance() const {
     return playerBalance;
 } 
 
-void PlayerBalance::increasePlayerBalance(int increaseValue) {
+void Player::increasePlayerBalance(int increaseValue) {
     playerBalance += increaseValue;
 }
 
-void PlayerBalance::decreasePlayerBalance(int decreaseValue) {
+void Player::decreasePlayerBalance(int decreaseValue) {
     playerBalance -= decreaseValue;
 }
 
-void PlayerBalance::printBalance(PlayerBalance& balance) {
+void Player::printPlayerBalance(Player& balance) {
     char choice;
     std::cout << "\n--------------------------------------------------------------------------------\n";
     std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;

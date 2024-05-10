@@ -1,16 +1,16 @@
-#ifndef PLAYERBALANCE_H
-#define PLAYERBALANCE_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
-class PlayerBalance {
+class Player {
     private:
         int playerBalance;
     public:
-        PlayerBalance();
-        PlayerBalance(int newPlayerBalance);
+        Player();
+        Player(int newPlayerBalance);
         int getPlayerBalance() const;
         void increasePlayerBalance(int increaseValue);
         void decreasePlayerBalance(int decreaseValue);
-        void printBalance(PlayerBalance& balance);
+        void printPlayerBalance(Player& balance);
 };
 
 #endif

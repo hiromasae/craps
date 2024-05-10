@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
-#include "../linkedlist/LinkedList.h"
-#include "../playerbalance/PlayerBalance.h"
+#include "../player/Player.h"
+#include "../playerbalancehistory/PlayerBalanceHistory.h"
 
-void craps(PlayerBalance& balance, LinkedList<std::string>& balanceList);
+void craps(Player& balance, LinkedList<std::string>& balanceList);
 
 #endif

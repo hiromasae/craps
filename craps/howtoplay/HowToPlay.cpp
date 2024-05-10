@@ -1,16 +1,17 @@
 #include <iostream>
 #include <fstream> 
 #include <string>
+
 #include "HowToPlay.h"
 
 void howToPlayDoc() {
     std::ifstream file;
-    char choice;
     std::string line;
+    char choice;
 
     std::cout << "--------------------------------------------------------------------------------\n";
 
-    file.open("crapsrules.txt");
+    file.open("../howtoplay/crapsrules.txt");
 
     if (!file.is_open()) {
         std::cout << "Error! Could not open file crapsrules.txt.";
