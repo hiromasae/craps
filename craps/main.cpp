@@ -14,12 +14,13 @@ int main() {
     int menuChoice;
     Player balance;
     LinkedList<std::string> balanceList;
+    LinkedList<int> rollList;
 
     do {
         menuChoice = getMenuChoice();
         switch (menuChoice) {
             case 1: 
-                craps(balance, balanceList);
+                craps(balance, balanceList, rollList);
                 break;
             case 2:
                 howToPlayDoc();
@@ -31,6 +32,7 @@ int main() {
                 printPlayerBalanceHistory(balanceList, balance);
                 break;
             case 5:
+                printRollHistory(rollList);
                 break;
         }
     } 

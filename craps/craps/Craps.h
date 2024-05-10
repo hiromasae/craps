@@ -3,6 +3,7 @@
 #include "../player/Player.h"
 #include "../playerbalancehistory/PlayerBalanceHistory.h"
 
-void crapsGame(Player& balance, LinkedList<std::string>& balanceList, int playerBet, bool isPlayerTurn);
+void crapsGame(Player& balance, LinkedList<std::string>& balanceList, LinkedList<int>& rollList, 
+                int playerBet, bool isPlayerTurn);
 
 #endif

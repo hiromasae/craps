@@ -2,6 +2,7 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
+#include <string>
 #include "../node/Node.h"
 
 template <typename T>
@@ -40,6 +41,18 @@ class LinkedList {
         void display() const {
             Node<T>* temp = head;
             while (temp != nullptr) {
+                std::cout << temp->data << std::endl;
+                temp = temp->next;
+            }
+        }
+
+        void displayRolls() const {
+            Node<T>* temp = head;
+            while (temp != nullptr) {
+                std::cout << temp->data << " + ";
+                temp = temp->next;
+                std::cout << temp->data << " = ";
+                temp = temp->next;
                 std::cout << temp->data << std::endl;
                 temp = temp->next;
             }
