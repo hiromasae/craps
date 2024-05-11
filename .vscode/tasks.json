@@ -3,24 +3,8 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++ build active file",
-            "command": "/usr/bin/g++",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${workspaceFolder}/craps/main.cpp",
-                "${workspaceFolder}/craps/craps/Craps.cpp",
-                "${workspaceFolder}/craps/diceroll/DiceRoll.cpp",
-                "${workspaceFolder}/craps/game/Game.cpp",
-                "${workspaceFolder}/craps/howtoplay/HowToPlay.cpp",
-                "${workspaceFolder}/craps/linkedlist/LinkedList.h",
-                "${workspaceFolder}/craps/menu/Menu.cpp",
-                "${workspaceFolder}/craps/node/Node.h",
-                "${workspaceFolder}/craps/player/Player.cpp",
-                "${workspaceFolder}/craps/playerbalancehistory/PlayerBalanceHistory.cpp",
-                "${workspaceFolder}/craps/rollhistory/RollHistory.cpp",
-                "-o",
-                "${workspaceFolder}/craps/main"
-            ],
+            "command": "/workspaces/craps/build.sh",
+            "args": [],
             "options": {
                 "cwd": "${fileDirname}"
             },
