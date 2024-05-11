@@ -35,7 +35,14 @@ int main() {
                 printRollHistory(rollList);
                 break;
         }
-    } 
+        if (balance.getPlayerBalance() == 0) {
+            break;
+        }
+    }    
     while (menuChoice != 0);
+
+    balanceList.outputTHToFile();
+    rollList.outputRHToFile();
+
     return 0;
 }

@@ -18,7 +18,7 @@ int getMenuChoice() {
         std::cin >> menuChoice;
       
         if (menuChoice < 0 || menuChoice > max_menu_option) {
-            std::cout << "Error! Input must be a number between 1 and 5 (0 to exit).\n";
+            std::cout << "\nError! Input must be a number between 1 and 5 (0 to exit).\n";
         }
     } 
     while (menuChoice < 0 || menuChoice > max_menu_option);

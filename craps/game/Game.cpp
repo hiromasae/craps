@@ -43,7 +43,8 @@ void craps(Player& balance, LinkedList<std::string>& balanceList, LinkedList<int
         playerBalance = balance.getPlayerBalance();
 
         if (balance.getPlayerBalance() == 0) {
-            std::cout << "You're broke!"; 
+            std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
+            std::cout << "You're broke!\n";
             break;
         }
 
@@ -51,7 +52,7 @@ void craps(Player& balance, LinkedList<std::string>& balanceList, LinkedList<int
         std::cout << std::endl;
 
         // Bot's bet
-        botBet = (rand() % balance.getPlayerBalance());
+        botBet = (rand() % balance.getPlayerBalance()) + 1;
         std::cout << "The bot puts $" << botBet << " into the pot.\n";
         std::cout << "Enter 'R' to continue: ";
         std::cin >> roll;
