@@ -9,7 +9,7 @@ int getMenuChoice() {
     do {
         std::cout << "\n--------------------------------------------------------------------------------\n";
         std::cout << "Craps menu: \n";
-        std::cout << " (1) Start game\n";
+        std::cout << " (1) Start game!!!!!!!!!!\n";
         std::cout << " (2) How to play\n";
         std::cout << " (3) Check balance\n";
         std::cout << " (4) Transaction history\n";

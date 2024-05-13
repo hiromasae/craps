@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream> 
 #include <string>
+#include <cstring>
 
 #include "HowToPlay.h"
 
@@ -11,10 +12,10 @@ void howToPlayDoc() {
 
     std::cout << "\n--------------------------------------------------------------------------------\n";
 
-    file.open("crapsrules.txt");
+    file.open("howtoplaycraps.txt");
 
-    if (!file.is_open()) {
-        std::cout << "Error! Unable to open file: crapsrules.txt";
+    if (!file) {
+        std::cerr << "Error!!!!!!: " << strerror(errno);
     }
 
     while (getline(file, line)) {
