@@ -12,7 +12,7 @@ history can each be viewed through the menu selection.
 
 Enter the following into the terminal to run the program: <br/>
 ```
-./build.sh && /workspaces/craps/craps/main 
+./build.sh && ./craps/main 
 ```
 
 ## Stages of Development
