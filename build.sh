@@ -10,4 +10,4 @@ g++ -c craps/playeraccount/PlayerAccount.cpp -o buildfiles/PlayerAccount.o
 g++ -c craps/returntomenu/ReturnToMenu.cpp -o buildfiles/ReturnToMenu.o
 g++ -c craps/truncatefile/TruncateFile.cpp -o buildfiles/TruncateFile.o
 g++ -c craps/main.cpp -o buildfiles/main.o
-g++ buildfiles/Bot.o buildfiles/DiceRoll.o buildfiles/Game.o buildfiles/GameMember.o buildfiles/HowToPlay.o buildfiles/Menu.o buildfiles/Player.o buildfiles/PlayerAccount.o buildfiles/ReturnToMenu.o buildfiles/main.o buildfiles/TruncateFile.o -o buildfiles/main
+g++ buildfiles/Bot.o buildfiles/Game.o buildfiles/GameMember.o buildfiles/HowToPlay.o buildfiles/Menu.o buildfiles/Player.o buildfiles/PlayerAccount.o buildfiles/ReturnToMenu.o buildfiles/main.o buildfiles/TruncateFile.o -o buildfiles/main
