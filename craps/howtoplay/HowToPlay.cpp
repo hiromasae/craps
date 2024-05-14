@@ -5,25 +5,26 @@
 
 #include "HowToPlay.h"
 
+#include "../returntomenu/ReturnToMenu.h"
+
 void howToPlayDoc() {
-    std::ifstream file;
+    std::ifstream fileIn;
     std::string line;
     char choice;
 
     std::cout << "\n--------------------------------------------------------------------------------\n";
 
-    file.open("howtoplaycraps.txt");
+    fileIn.open("craps/howtoplay/howtoplaycraps.txt");
 
-    if (!file) {
-        std::cerr << "Error!!!!!!: " << strerror(errno);
+    if (!fileIn) {
+        std::cerr << "Error!: " << strerror(errno);
     }
 
-    while (getline(file, line)) {
+    while (getline(fileIn, line)) {
         std::cout << line << std::endl;
     }
 
-    file.close();
+    fileIn.close();
     
-    std::cout << "\n'Q' to return to menu:\n";
-    std::cin >> choice;
+    returnToMenu();
 }

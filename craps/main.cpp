@@ -1,4 +1,4 @@
-#include <iostream>
+#include <string>
 #include <cstdlib>
 #include <ctime>
 
@@ -6,41 +6,48 @@
 #include "howtoplay/HowToPlay.h"
 #include "linkedlist/LinkedList.h"
 #include "menu/Menu.h"
-#include "player/Player.h"
-#include "playerbalancehistory/PlayerBalanceHistory.h"
+#include "playeraccount/PlayerAccount.h"
+#include "truncatefile/TruncateFile.h"
 
 int main() {
-    srand(static_cast<unsigned int>(time(0)));
     int menuChoice;
-    Player balance;
+    PlayerAccount playerAccount;
     LinkedList<std::string> balanceList;
     LinkedList<int> rollList;
+
+    //Delete txt files contents when program starts
+    truncateFile("craps/transactionhistory.txt");
+    truncateFile("craps/rollhistory.txt");
+    
+    srand(static_cast<unsigned int>(time(0)));
 
     do {
         menuChoice = getMenuChoice();
         switch (menuChoice) {
             case 1: 
-                craps(balance, balanceList, rollList);
+                craps(playerAccount, balanceList, rollList);
                 break;
             case 2:
                 howToPlayDoc();
                 break;
             case 3:
-                balance.printPlayerBalance(balance);
+                playerAccount.printPlayerBalance(playerAccount);
                 break;
             case 4:
-                printPlayerBalanceHistory(balanceList, balance);
+                playerAccount.printPlayerBalanceHistory(balanceList, playerAccount);
                 break;
             case 5:
-                printRollHistory(rollList);
+                playerAccount.printRollHistory(rollList);
                 break;
         }
-        if (balance.getPlayerBalance() == 0) {
+        if (playerAccount.getPlayerBalance() == 0) {
             break;
         }
     }    
     while (menuChoice != 0);
 
+    // Output transaction history and roll history into
+    // respective txt files right before program ends
     balanceList.outputTHToFile();
     rollList.outputRHToFile();
 

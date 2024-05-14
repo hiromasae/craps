@@ -41,6 +41,9 @@ class LinkedList {
 
         void display() const {
             Node<T>* temp = head;
+            if (temp == nullptr) {
+                std::cout << " (No transactions)" << std::endl;
+            }
             while (temp != nullptr) {
                 std::cout << temp->data << std::endl;
                 temp = temp->next;
@@ -49,6 +52,9 @@ class LinkedList {
 
         void displayRolls() const {
             Node<T>* temp = head;
+            if (temp == nullptr) {
+                std::cout << " (No rolls)" << std::endl;
+            }
             while (temp != nullptr) {
                 std::cout << temp->data << " + ";
                 temp = temp->next;
@@ -63,7 +69,7 @@ class LinkedList {
             Node<T>* temp = head;
             std::ofstream outFile;
 
-            outFile.open("../transactionhistory.txt");
+            outFile.open("craps/transactionhistory.txt");
 
             if (!outFile.is_open()) {
                 std::cerr << "Error! Unable to open file: transactionhistory.txt";
@@ -83,7 +89,7 @@ class LinkedList {
             Node<T>* temp = head;
             std::ofstream outFile;
 
-            outFile.open("../rollhistory.txt");
+            outFile.open("craps/rollhistory.txt");
 
             if (!outFile.is_open()) {
                 std::cerr << "Error! Unable to open file: rollhistory.txt";

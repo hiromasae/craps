@@ -1,13 +1,16 @@
 #include <iostream>
+#include <limits>
 
 #include "Game.h"
-#include "../craps/Craps.h"
+
+#include "../bot/Bot.h"
 #include "../linkedlist/LinkedList.h"
 #include "../player/Player.h"
-#include "../playerbalancehistory/PlayerBalanceHistory.h"
-#include "../rollhistory/RollHistory.h"
+#include "../playeraccount/PlayerAccount.h"
 
-void craps(Player& balance, LinkedList<std::string>& balanceList, LinkedList<int>& rollList) {
+void craps(PlayerAccount& account, LinkedList<std::string>& balanceList, LinkedList<int>& rollList) {
+    Player playerTurn;
+    Bot botTurn;
     char playAgain = 'y';
     char roll;
     int playerBalance;
@@ -16,56 +19,82 @@ void craps(Player& balance, LinkedList<std::string>& balanceList, LinkedList<int
 
     std::cout << "\n--------------------------------------------------------------------------------\n";
     std::cout << "Welcome to craps!\n";
-    std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
+    std::cout << "Your current balance is: $" << account.getPlayerBalance() << std::endl;
 
     while (playAgain == 'y' || playAgain == 'Y') {
-        playerBalance = balance.getPlayerBalance();
+        playerBalance = account.getPlayerBalance();
 
         //Player's bet
         do {
             std::cout << "\nEnter your bet: $";
-            std::cin >> playerBet;
-
-            if (playerBet > playerBalance) {
-                std::cout << "Insufficient balance to place bet. Please try a smaller amount." << std::endl;
+            while(!(std::cin >> playerBet)) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+                std::cout << "Invalid input. Please enter an integer: $";
             }
-        } 
-        while (playerBet > playerBalance);
 
+            while(playerBet > account.getPlayerBalance()) {
+                std::cout << "Insufficient balance to place bet. Please try a smaller amount: $";
+                std::cin >> playerBet;
+                if (playerBet <= account.getPlayerBalance()) {
+                    break;
+                }
+            }
+        } while(playerBet > account.getPlayerBalance());
+    
         std::cout << "The bot puts $" << playerBet << " into the pot.\n";
-        std::cout << "Enter 'R' to roll: ";
-        std::cin >> roll;
-        std::cout << std::endl;
-
+        
+        do {
+            std::cout << "\nEnter 'R' to roll: ";
+            std::cin >> roll;
+            while (roll != 'r' && roll != 'R') {
+                std::cout << "Invalid input. Please enter 'R' to roll: ";
+                std::cin >> roll;
+            }
+        } while (roll != 'r' && roll != 'R');
+        
         //Player's roll turn (true)
-        crapsGame(balance, balanceList, rollList, playerBet, true);
+        playerTurn.playerRollOutcome(balanceList, rollList, account, playerBet);
 
-        playerBalance = balance.getPlayerBalance();
+        playerBalance = account.getPlayerBalance();
 
-        if (balance.getPlayerBalance() == 0) {
-            std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
+        if (account.getPlayerBalance() == 0) {
+            std::cout << "Your current balance is: $" << account.getPlayerBalance() << std::endl;
             std::cout << "You're broke!\n";
             break;
         }
 
-        std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
+        std::cout << "Your current balance is: $" << account.getPlayerBalance() << std::endl;
         std::cout << std::endl;
 
         // Bot's bet
-        botBet = (rand() % balance.getPlayerBalance()) + 1;
+        botBet = (rand() % account.getPlayerBalance()) + 1;
         std::cout << "The bot puts $" << botBet << " into the pot.\n";
-        std::cout << "Enter 'R' to continue: ";
-        std::cin >> roll;
-        std::cout << std::endl;
+        
+        do {
+            std::cout << "\nEnter 'R' to continue: ";
+            std::cin >> roll;
+            while (roll != 'r' && roll != 'R') {
+                std::cout << "Invalid input. Please enter 'R' to continue: ";
+                std::cin >> roll;
+            }
+        } while (roll != 'r' && roll != 'R');
 
         //Bot's roll turn
-        crapsGame(balance, balanceList, rollList, botBet, false);
+        botTurn.botRollOutcome(account, balanceList, rollList, botBet);
 
-        std::cout << "Your current balance is: $" << balance.getPlayerBalance() << std::endl;
-        std:: cout << "Another game? 'Y' or 'N':\n";
-        std::cin >> playAgain;
+        std::cout << "Your current balance is: $" << account.getPlayerBalance() << std::endl;
 
-        if (playAgain != 'y' && playAgain != 'Y') {
+        do {
+            std:: cout << "\nAnother game? 'Y' or 'N':\n";
+            std::cin >> playAgain;
+            while (playAgain != 'y' && playAgain != 'Y' && playAgain != 'n' && playAgain != 'N') {
+                std::cout << "Invalid input. Please enter 'Y' or 'N': ";
+                std::cin >> playAgain;
+            }
+        } while (playAgain != 'y' && playAgain != 'Y' && playAgain != 'n' && playAgain != 'N');
+
+        if (playAgain == 'n' && playAgain == 'N') {
             break;
         }
     }

@@ -1,9 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
-#include "../player/Player.h"
-#include "../playerbalancehistory/PlayerBalanceHistory.h"
-#include "../rollhistory/RollHistory.h"
 
-void craps(Player& balance, LinkedList<std::string>& balanceList, LinkedList<int>& rollList);
+#include "../linkedlist/LinkedList.h"
+#include "../playeraccount/PlayerAccount.h"
+#include "../player/Player.h"
+
+void craps(PlayerAccount& balance, LinkedList<std::string>& balanceList, LinkedList<int>& rollList);
 
 #endif

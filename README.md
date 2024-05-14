@@ -12,7 +12,7 @@ history can each be viewed through the menu selection.
 
 Enter the following into the terminal to run the program: <br/>
 ```
-./build.sh && ./craps/main 
+./build.sh && ./buildfiles/main
 ```
 
 ## Stages of Development
@@ -25,11 +25,11 @@ Enter the following into the terminal to run the program: <br/>
 - Create linked list template for transaction history and roll history
 - Implement transaction history using template and print to screen
 - Implement roll history using template and print to screen
-
-### Future Stages:
 - Game rules read from file then print to screen
 - Print transaction history and roll history to respective txt files after exiting game
-- Unit tests for each class
+- Made player and bot subclasses of gamemember
 - Error messages for wrong input
-- Change "Game" to be a base class and make "Craps" its subclass. 
+
+### Future Stages:
 - Search algorithm to find largest gain and loss from transactions 
+- Unit tests for each class
