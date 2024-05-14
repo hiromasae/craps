@@ -1,3 +1,5 @@
+touch craps/rollhistory.txt
+touch craps/transactionhistory.txt
 g++ -c craps/bot/Bot.cpp -o buildfiles/Bot.o
 g++ -c craps/game/Game.cpp -o buildfiles/Game.o
 g++ -c craps/gamemember/GameMember.cpp -o buildfiles/GameMember.o
