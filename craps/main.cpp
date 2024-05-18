@@ -1,3 +1,5 @@
+//author: Hiro Eernisse
+
 #include <string>
 #include <cstdlib>
 #include <ctime>

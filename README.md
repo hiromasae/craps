@@ -10,7 +10,7 @@ history can each be viewed through the menu selection.
 
 ## Execution
 
-Enter the following into the terminal to run the program: <br/>
+Enter the following into the command line to run the program: <br/>
 ```
 ./build.sh && ./buildfiles/main
 ```
@@ -33,3 +33,14 @@ Enter the following into the terminal to run the program: <br/>
 ### Future Stages:
 - Search algorithm to find largest gain and loss from transactions 
 - Unit tests for each class
+
+### Skipped Content:
+- Allow user to deposit starting balance at the beginning
+- Include a game mode with two bots
+- Include a game mode with a player against another player
+
+## Audience
+
+This program is directed towards gamblers who enjoy a straightforward and quick game of craps. <br/>
+Other developers may use this code as a template to add more features or create their own version of <br/>
+craps.
